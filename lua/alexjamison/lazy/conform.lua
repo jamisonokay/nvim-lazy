@@ -6,7 +6,8 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 go = { "gofmt" },
-                javascript = { "prettierd", "prettier", stop_after_first = true }
+                javascript = { "prettierd", "prettier", stop_after_first = true },
+                html = { "html_beautify" }
             }
         })
     end
