@@ -45,7 +45,6 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
-                "htmx"
             },
             handlers = {
                 function(server_name) -- default handler (optional)

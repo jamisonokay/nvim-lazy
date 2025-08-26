@@ -40,11 +40,15 @@ autocmd('BufEnter', {
     end
 })
 
-autocmd("BufWritePre", {
+-- autocmd("BufWritePre", {
+--     pattern = "*",
+--     callback = function(args)
+--         require("conform").format({ bufnr = args.buf })
+--     end,
+-- })
+autocmd({ "BufWritePre" }, {
     pattern = "*",
-    callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-    end,
+    command = [[%s/\s\+$//e]],
 })
 
 autocmd('LspAttach', {
