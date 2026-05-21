@@ -11,7 +11,7 @@ return {
             typescript = {"prettier", stop_after_first = true},
             typescriptreact = { "prettier", stop_after_first = true },
             json = { "prettier", stop_after_first = true },
-            html = { "html_beautify" },
+            html = { "html_beautify", "prettydiff", "prettier", stop_after_first = true },
             sql = { "sqruff" }
         },
         format_on_save = {
