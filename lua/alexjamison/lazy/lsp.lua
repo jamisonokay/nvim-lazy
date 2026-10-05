@@ -45,6 +45,8 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
+                "tailwindcss",
+                "templ",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -87,6 +89,22 @@ return {
                         }
                     }
                 end,
+                ["tailwindcss"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.tailwindcss.setup({
+                        capabilities = capabilities,
+                        filetypes = {"templ", "html", "css", "javascript", "javascriptreact", "typescriptreact"},
+                        init_options = {
+                            userLanguages = { templ = "html" }
+                        },
+                        settings = {
+                            tailwindCSS = {
+                                 includeLanguages = { templ = "html" },
+                                 classFunctions = { "cva", "clsx", "cn" },
+                            }
+                        }
+                    })
+                end
             }
         })
 
