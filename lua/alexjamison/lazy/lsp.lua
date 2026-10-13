@@ -104,6 +104,13 @@ return {
                             }
                         }
                     })
+                end,
+                ["html"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.html.setup({
+                        capabilities = capabilities,
+                        filetypes = { "html", "templ"},
+                    })
                 end
             }
         })
