@@ -1,9 +1,17 @@
+local templ = require("alexjamison.utils.templ")
 return {
     'stevearc/conform.nvim',
     -- This will provide type hinting with LuaLS
     --   ---@module "conform"
     --     ---@type conform.setupOpts
     opts = {
+        formatters = {
+            templ_attrs = {
+                format = function (_, _, lines, callback)
+                    callback(nil, templ.split_attrs(lines))
+                end,
+            }
+        },
         formatters_by_ft = {
             lua = { "stylua" },
             go = { "gofmt" },
@@ -13,7 +21,8 @@ return {
             json = { "prettier", stop_after_first = true },
             html = { "html_beautify", "prettydiff", "prettier", stop_after_first = true },
             sql = { "sqruff" },
-            zig = { "zigfmt" }
+            zig = { "zigfmt" },
+            templ = {"templ_attrs", "templ"}
         },
         format_on_save = {
             timeout_ms = 500,
